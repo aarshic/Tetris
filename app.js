@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let squares = Array.from(document.querySelectorAll('.grid div'))
     const scoreDisplay = document.querySelector('#score')
     const startBtn = document.querySelector('#start-button')
+    const newGame = document.querySelector('#new-game')
     const width = 10
     let nextRandom = 0
     let timerId
@@ -199,21 +200,25 @@ document.addEventListener('DOMContentLoaded', () => {
   
     //add functionality to the button
     startBtn.addEventListener('click', () => {
-        if (timerId) {
-            clearInterval(timerId)
-            timerId = null
+        if(timerId) {
+        //     clearInterval(timerId)
+        //     timerId = null
         } 
         else {
             draw()
-            timerId = setInterval(moveDown, 1000)
+            timerId = setInterval(moveDown, 500)
             nextRandom = Math.floor(Math.random()*theTetrominoes.length)
             displayShape()
         }
     })
-  
+
+    newGame.addEventListener('click', () => {
+        location.reload()
+    })
+
     //add score
     function addScore() {
-        for (let i = 0; i < 199; i +=width) {
+        for (let i=0;i<199;i+=width) {
         const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
 
         if(row.every(index => squares[index].classList.contains('taken'))) {
@@ -234,10 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //game over
     function gameOver() {
         if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-            scoreDisplay.innerHTML = 'end'
+            scoreDisplay.innerHTML = score
             clearInterval(timerId)
         }
     }
   
-  })
-  
+})

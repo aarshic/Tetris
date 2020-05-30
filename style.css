@@ -1,13 +1,37 @@
+body {
+    height: auto;
+    width: auto;
+    max-height: 200px;
+    background-image: url("images/tetris.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.heading {
+    color: white;
+    font-size: 3em;
+}
+
 .container {
+    height: 500px;
+    width: 600px;
     display: flex;
+    margin-left: 32.5%;
+    margin-right: 50%;
 }
 
 .grid {
-    width: 200px;
-    height: 400px;
+    width: 220px;
+    height: 440px;
     display: flex;
-    flex-wrap: wrap; 
-    background-color: yellow;
+    flex-wrap: wrap;     
+    background-color: black;
+    /* border: #E4D4D4 ridge 0.5em; */
+    box-shadow: 0 0 0 0.3em #9F9F9F;
+    outline: dashed 0.4em #E4D4D4;
+    border: solid 0.3em #E4D4D4;
 }
 
 .grid div {
@@ -15,20 +39,58 @@
     width: 20px;
 }
 
-.tetromino {
-    background-color: blue;
+.game-block {
+    border: #E4D4D4 groove 0.0025em;
+}
+
+.scoreBoard {
+    width: 80px;
+    height: 80px;
+    /* background-image: linear-gradient(to bottom right, #979797,	#B3B3B3); */
+    background: linear-gradient(to bottom, rgba(47,97,167,1) 30%, rgba(46,110,161,1) 60%, rgba(45,113,160,1) 67%, rgba(44,125,155,1) 94%);
+    text-align: center;
 }
 
 .mini-grid {
     width: 80px;
     height: 80px;
-    margin-left: 50px;
+    margin-top: -100%;
     display: flex;
+    offset-position: center;
     flex-wrap: wrap;
-    background-color: yellow;
+    background-color: black;
 }
 
 .mini-grid div {
     height: 20px;
     width: 20px;
+}
+
+.btn {
+    margin-top: 15%;
+    margin-right: 7%;
+    display: grid;
+}
+
+#start-button {
+    height: 80px;
+    width: 80px;
+    background: radial-gradient(ellipse at center, rgba(158,198,255,1) 0%, rgba(26,20,20,1) 100%);
+    font-weight: bold;
+    font-size: .8em;
+}
+
+#new-game {
+    height: 80px;
+    width: 80px;
+    margin-top: -100%;
+    background: radial-gradient(ellipse at center, rgba(158,198,255,1) 0%, rgba(26,20,20,1) 100%);
+    font-weight: bold;
+    font-size: .8em;
+}
+
+.second-grid {
+    margin-top: 15%;
+    margin-left: 7%;
+    display: grid;
 }
