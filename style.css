@@ -45,10 +45,25 @@ body {
 
 .scoreBoard {
     width: 80px;
-    height: 80px;
-    /* background-image: linear-gradient(to bottom right, #979797,	#B3B3B3); */
+    height: 140px;
     background: linear-gradient(to bottom, rgba(47,97,167,1) 30%, rgba(46,110,161,1) 60%, rgba(45,113,160,1) 67%, rgba(44,125,155,1) 94%);
     text-align: center;
+}
+
+#score {
+    margin-bottom: -20px;
+    padding-bottom: -20px;
+}
+
+#level { 
+    margin-top: -20px;
+    padding-top: -20px;
+}
+
+.second-grid {
+    margin-top: 12%;
+    margin-left: 7%;
+    display: grid;
 }
 
 .mini-grid {
@@ -59,6 +74,18 @@ body {
     offset-position: center;
     flex-wrap: wrap;
     background-color: black;
+    position: center;
+    object-position: center;
+    offset-position: center;
+    background-position: center;
+    align-items: center;
+    align-content: center;
+    vertical-align: center;
+    initial-letter-align: center;
+    mask-position: center;
+    ruby-position: center;
+    background-position-x: center;
+    background-position-y: center;
 }
 
 .mini-grid div {
@@ -87,10 +114,4 @@ body {
     background: radial-gradient(ellipse at center, rgba(158,198,255,1) 0%, rgba(26,20,20,1) 100%);
     font-weight: bold;
     font-size: .8em;
-}
-
-.second-grid {
-    margin-top: 15%;
-    margin-left: 7%;
-    display: grid;
 }

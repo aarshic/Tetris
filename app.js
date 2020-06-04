@@ -2,12 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid')
     let squares = Array.from(document.querySelectorAll('.grid div'))
     const scoreDisplay = document.querySelector('#score')
+    const levelDisplay = document.querySelector('#level')
     const startBtn = document.querySelector('#start-button')
     const newGame = document.querySelector('#new-game')
     const width = 10
     let nextRandom = 0
     let timerId
     let score = 0
+    let time = 1000
+    let level = 1
     const colors = ['blue', 'red', 'purple', 'orange', 'green']
   
     //The Tetrominoes
@@ -206,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } 
         else {
             draw()
-            timerId = setInterval(moveDown, 500)
+            timerId = setInterval(moveDown, time)
             nextRandom = Math.floor(Math.random()*theTetrominoes.length)
             displayShape()
         }
@@ -219,20 +222,26 @@ document.addEventListener('DOMContentLoaded', () => {
     //add score
     function addScore() {
         for (let i=0;i<199;i+=width) {
-        const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
+            const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
 
-        if(row.every(index => squares[index].classList.contains('taken'))) {
-            score +=10
-            scoreDisplay.innerHTML = score
-            row.forEach(index => {
-                squares[index].classList.remove('taken')
-                squares[index].classList.remove('tetromino')
-                squares[index].style.backgroundColor = ''
-            })
-            const squaresRemoved = squares.splice(i, width)
-            squares = squaresRemoved.concat(squares)
-            squares.forEach(cell => grid.appendChild(cell))
-        }
+            if(row.every(index => squares[index].classList.contains('taken'))) {
+                score += 10
+                if(score%100 == 0) {
+                    level++
+                    time=time/1.2
+                    timerId = setInterval(moveDown, time)
+                }
+                scoreDisplay.innerHTML = score
+                levelDisplay.innerHTML = level
+                row.forEach(index => {
+                    squares[index].classList.remove('taken')
+                    squares[index].classList.remove('tetromino')
+                    squares[index].style.backgroundColor = ''
+                })
+                const squaresRemoved = squares.splice(i, width)
+                squares = squaresRemoved.concat(squares)
+                squares.forEach(cell => grid.appendChild(cell))
+            }
         }
     }
   
